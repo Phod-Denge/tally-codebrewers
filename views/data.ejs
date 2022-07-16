@@ -21,6 +21,14 @@
 				</table>
 			</center>
 		</div>
+		<% for (let i = 0;i<quizzes.length; i++) { %>
+			<div>
+			<h2><%=i%></h2>
+			<h3>QUIZ NAME:<%= quizzes[i].quizname %> </h3>
+			<h3>QUIZ DESCRIPTION:<%= quizzes[i].quizdescription %> </h3>
+			<h3>NUMBER OF QUESTION:<%= quizzes[i].questonIDs.length %> </h3>
+		</div>
+			<% } %> 
 		<div class="abc">
 			<a href="/logout">Logout</a>
 			<a href="/createquiz">Create Quiz</a>
