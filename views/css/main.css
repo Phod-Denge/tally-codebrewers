@@ -25,7 +25,6 @@ body{
 
 /* header home page */
 .navbar{
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -34,6 +33,7 @@ body{
 .navbar-heading{
     font-size: 1.5rem;
     margin: .5rem;
+    font-weight: bold;
 }
 
 .nav-menu{
@@ -89,21 +89,22 @@ body{
     width: 100%;
     background-color: #6577B3;
     overflow: hidden;
+    height: 70vh;
 }
 
 .main-info__image{
-    width: 40%;
-    height: 100% !important;
+    width: 45%;
+    height: 100%;
 }
 
 .main-info__image img{
-    width: 100%;
     height: 100%;
-    clip-path: circle(50% at 20% 51%);
+    width: 100%;
+    clip-path: polygon(0 0, 92% 0, 75% 100%, 0% 100%);
 }
 
 .main-info__intro{
-    width: 60%;
+    width: 55%;
     display: flex;
     flex-direction: column;
     padding: 4rem;
@@ -123,16 +124,18 @@ body{
 .main-info__intro .register-btn{
     border: none;
     outline: none;
+    width: 10rem;
     border-radius: 0.4rem;
-    width: 30%;
     padding: 0.6rem;
     margin-bottom: 0.4rem;
     background-color: #EDD94C;
     font-size: 1.2rem;
-    
+   
 }
-.main-info__intro .register-btn a
-{color: #6577B3;}
+
+.main-info__intro .register-btn a{
+    color: #6577B3;
+}
 
 .main-info__intro .register-btn:hover , .main-info__intro .register-btn:active{
     cursor: pointer;
@@ -145,6 +148,153 @@ body{
 
 .main-info__intro a:hover ,.main-info__intro a:active{
     cursor: pointer;
+}
+
+
+/* cards Features section */
+.features{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.features h1{
+    font-size: 3.5rem;
+    padding: 2rem;
+    color: #6577B3;
+    text-align: center;
+}
+
+.cards{
+    display: flex;
+}
+
+.card{
+    height: 72vh;
+    width: 30vw;
+    font-size: 1.2rem;
+    margin: 2rem;
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 7px 30px -10px rgba(150,170,180,0.5);
+}
+
+.card-image{
+    width: 100%;
+    height: 70%;
+}
+
+.card-image img{
+    width: 100%;
+    height: 100%;
+}
+
+.card-info p{
+    padding-top: 1rem;
+}
+
+/* footer */
+.footer{
+    margin-top: 2rem;
+    background-color: #6577B3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.footer h1{
+    color: #ffffff;
+}
+
+@media (max-width : 1200px) {
+    .card-image{
+        height: 60%;
+    }    
+}
+
+@media (max-width : 850px) {
+    .card{
+        width: 35vw;
+    }
+    .card-image{
+        height: 55%;
+    }
+}
+
+@media (max-width : 800px){
+    .features h1{
+        font-size: 3.2rem;
+    }
+    .cards{
+        flex-direction: column;
+    }
+    .card{
+        width: 40vw;
+    }
+    .card-image{
+        height: 60%;
+    }
+
+    .main-info{
+        flex-direction: column;
+        /* align-items: center; */
+        justify-content: center;
+        height: 100%;
+    }
+    .main-info__image{
+        width: 80%;
+        height: 20%;
+    }
+    .main-info__image img{
+        clip-path: circle(50% at 50% 10%);
+    }
+
+    .main-info__intro{
+        width: 100%;
+        padding: 2rem;
+        padding-top: 0;
+        text-align: center;
+        align-items: center;
+    }
+}
+
+@media (max-width : 650px){
+    .features h1{
+        font-size: 3rem;
+    }
+    .card{
+        width: 45vw;
+    }
+
+    .main-info__intro h1{
+        font-size: 3.2rem;
+    }
+}
+
+@media (max-width : 570px){
+    .card{
+        width: 52vw;
+    }
+}
+
+@media (max-width: 500px) {
+    .card{
+        width: 60vw;
+    }
+    .card-info p{
+        font-size: 1.1rem;
+    }
+
+    .main-info__intro h1{
+        font-size: 3rem;
+    }
+
+    .main-info__image{
+        width: 100%;
+    }
 }
 
 @media (max-width : 400px) {
@@ -170,5 +320,9 @@ body{
 
     .active{
         display: flex !important;
+    }
+
+    .card{
+        width: 65vw;
     }
 }

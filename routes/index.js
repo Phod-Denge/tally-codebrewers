@@ -8,6 +8,9 @@ router.get('/',function(req,res)
 }
 );
 
+router.get('/createquiz',function(req,res){
+	return res.render('createquiz.ejs');
+});
 
 router.get('/signup', function (req, res, next) {
 	return res.render('index.ejs');
@@ -52,7 +55,7 @@ router.post('/signup', function(req, res, next) {
 						});
 
 					}).sort({_id: -1}).limit(1);
-					res.send({"Success":"You are regestered,You can login now."});
+					res.send({"Success":"You are registered,You can login now."});
 				}else{
 					res.send({"Success":"Email is already used."});
 				}
@@ -65,7 +68,7 @@ router.post('/signup', function(req, res, next) {
 });
 
 router.get('/login', function (req, res, next) {
-	return res.render('login.ejs');
+	return res.render('login2.ejs');
 });
 
 router.post('/login', function (req, res, next) {
@@ -115,37 +118,4 @@ router.get('/logout', function (req, res, next) {
     });
 }
 });
-
-router.get('/forgetpass', function (req, res, next) {
-	res.render("forget.ejs");
-});
-
-router.post('/forgetpass', function (req, res, next) {
-	//console.log('req.body');
-	//console.log(req.body);
-	User.findOne({email:req.body.email},function(err,data){
-		console.log(data);
-		if(!data){
-			res.send({"Success":"This Email Is not regestered!"});
-		}else{
-			// res.send({"Success":"Success!"});
-			if (req.body.password==req.body.passwordConf) {
-			data.password=req.body.password;
-			data.passwordConf=req.body.passwordConf;
-
-			data.save(function(err, Person){
-				if(err)
-					console.log(err);
-				else
-					console.log('Success');
-					res.send({"Success":"Password changed!"});
-			});
-		}else{
-			res.send({"Success":"Password does not matched! Both Password should be same."});
-		}
-		}
-	});
-	
-});
-
-module.exports = router;
+module.exports=router;
