@@ -1,5 +1,6 @@
 var mongoose = require('mongoose')
 var quizSchema = mongoose.Schema({
+
     quizname: {
         type: String,
         required: true
@@ -7,9 +8,6 @@ var quizSchema = mongoose.Schema({
     quizdescription: {
         type: String,
         required: true
-    },
-    upload:{
-        type: Boolean, default: false
     },
     owner: {
         type: String,
