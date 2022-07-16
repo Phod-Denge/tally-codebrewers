@@ -2,37 +2,66 @@
 <html>
 <head>
 	<title>Welcome</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 	</script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 	<link rel="stylesheet" href="./css/main.css">
+<link rel="stylesheet" href="./css/profile.css">
 </head>
 <body>
-	<div class="col-md-4 col-md-offset-4">
+	<nav class="navbar">
+        <div class="navbar-heading">PD Quiz</div>
+        <div class="menu-toggle" id="mobile-nav">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="/logout" class="nav-links">Logout</a></li>
+            <li><a href="/createquiz" class="nav-links">Create Quiz</a></li>
+        </ul>
+    </nav>
+
+
+
+	<div class="profiledetail">
 		<div>
 			<p>Profile Detail</p>
 		</div>
 		<div>
-			<center>
-				<table class="table table-hover text-center">
+		
+				<table>
 					<tr><td>Name </td><td><%= name %></td></tr>
 					<tr><td>Email </td><td><%= email %></td></tr>
 				</table>
-			</center>
+			
 		</div>
+		</div>
+		<table  class="quizesdetail">
+			<tr>
+				<th>S no.</th>
+				<th>QUIZ NAME:</th>
+				<th>
+					QUIZ DESCRIPTION:
+				</th>
+				<th>
+					NUMBER OF QUESTION:
+				</th>
+			</tr>
 		<% for (let i = 0;i<quizzes.length; i++) { %>
 			<div>
-			<h2><%=i%></h2>
-			<h3>QUIZ NAME:<%= quizzes[i].quizname %> </h3>
-			<h3>QUIZ DESCRIPTION:<%= quizzes[i].quizdescription %> </h3>
-			<h3>NUMBER OF QUESTION:<%= quizzes[i].questionIDs.length %> </h3>
+
+<tr>
+		<td>	<h2><%=i+1%></h2></td>
+			<td><h3><%= quizzes[i].quizname %> </h3></td>
+		<td>	<h3><%= quizzes[i].quizdescription %> </h3></td>
+			<td><h3><%= quizzes[i].questonIDs.length %> </h3></td>
+			</tr>
 		</div>
 			<% } %> 
-		<div class="abc">
-			<a href="/logout">Logout</a>
-			<a href="/createquiz">Create Quiz</a>
-		</div>
+			
+		</table>
 	</div>
 </body>
 </html>

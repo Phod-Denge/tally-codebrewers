@@ -1,0 +1,38 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .quizesdetail td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    
+  }
+
+  .quizesdetail td{
+font-weight: 400;
+  }
+  
+  .quizesdetail tr:nth-child(even) {
+    background-color: #7f94d9;
+  color: white;
+  }
+
+  .profiledetail{
+      margin-bottom: 4%;
+      margin-top: 4%;
+      margin-left: 3%;
+      width: 40%;
+  }
+  .profiledetail p{
+      margin-bottom: 1%;
+  }
+
+  .profiledetail td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    
+  }
