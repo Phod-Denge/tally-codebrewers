@@ -5,6 +5,10 @@ var quizSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    quizid: {
+        type: Number,
+        required: true
+    },
     quizdescription: {
         type: String,
         required: true
@@ -15,7 +19,7 @@ var quizSchema = mongoose.Schema({
     owneremail: {
         type: String,
     },
-    questonIDs:{
+    questionIDs:{
         type  :Array,
         default:[]
     }
