@@ -3,6 +3,7 @@ var router = express.Router();
 var User = require('../models/user');
 var quiz = require('../models/quiz');
 var question = require('../models/question');
+let {get_quiz_by_user}= require('./queries')
 let quiz_name="";
 let curr_user_name=""
 let curr_user_email=""
@@ -152,14 +153,19 @@ router.get('/profile', function (req, res, next) {
 	console.log("profile");
 	User.findOne({unique_id:req.session.userId},function(err,data){
 		console.log("data");
-		console.log(data);
+		// console.log(data);
 		if(!data){
 			res.redirect('/');
 		}else{
 			//console.log("found");
 			curr_user_name=data.username
 			curr_user_email=data.email
-			return res.render('data.ejs', {"name":data.username,"email":data.email});
+			let quizzes=get_quiz_by_user(data.username);
+			quizzes.then(d=>{
+				console.log(d[0])
+				return res.render('data.ejs', {"name":data.username,"email":data.email,"quizzes":d});
+			})
+			
 		}
 	});
 });
