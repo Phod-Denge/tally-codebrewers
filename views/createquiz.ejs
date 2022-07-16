@@ -2,11 +2,12 @@
 <html>
 <head>
 	<title>Welcome</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 	</script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 	<link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/createQuiz.css">
 </head>
 <body>
     <nav class="navbar">
@@ -17,8 +18,8 @@
                 <span class="bar"></span>
         </div>
         <ul class="nav-menu">
-            <li><a href="/signup" class="nav-links">Teacher</a></li>
-            <li><a href="#" class="nav-links">Contact</a></li>
+            <li><a href="/signup" class="nav-links">About Us</a></li>
+            <!-- <li><a href="#" class="nav-links">Contact</a></li> -->
             <li class="abc">
                 <a href="/logout" class="nav-links">Logout</a>
             </li>
@@ -26,11 +27,14 @@
     </nav>
 	
     <div class="form-class">
+        <h1>Create Quiz</h1>
         <form action="/createquiz" id="form1" class="search_form" spellcheck="false" method="post"> 
-           <input type="text" name="quizName" label="Name-" placeholder="Name" required="" class="form-control question"><br/>
+           <input type="text" name="quizName" label="Name-" placeholder="Name" required="" class="form-control question">
            <input type="text" name="quizDescription" label="Description-" placeholder="Description" required="" class="form-control question"><br/>
 
-   <button type="submit">Submit</button>
+   <button type="submit" class="submit-btn">Submit</button>
        </form>
+    </div>
+    <script src="./JS/main.js"></script>
 </body>
 </html>

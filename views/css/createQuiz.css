@@ -1,0 +1,77 @@
+.form-class{
+    width: 80vw;
+    margin: auto;
+    margin-top: 4rem;
+    background-color: #6577B3;
+    padding: 3.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 25px 40px -10px rgba(15, 61, 84, 0.5);
+}
+
+.form-class h1{
+    font-size: 3.2rem;
+    margin-bottom: 1rem;
+    color: #EDD94C;
+    font-weight: bold ;
+}
+
+.question{
+    width: 100%;
+    margin: 0.6rem 0;
+    padding: 0.5rem;
+    outline: none;
+    border: none;
+    border-radius: 0.2rem;
+    text-align: left;
+}
+
+.question::placeholder {
+    color: rgb(154, 154, 154);
+    opacity: 1;
+  }
+
+.submit-btn{
+    border: none;
+    outline: none;
+    width: 10rem;
+    border-radius: 0.4rem;
+    padding: 0.6rem;
+    margin-bottom: 0.4rem;
+    margin-top: 1rem;
+    background-color: #EDD94C;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #6577B3;
+}
+
+.submit-btn{
+    color: #6577B3;
+}
+
+.submit-btn:hover , .submit-btn:active{
+    cursor: pointer;
+}
+
+@media (max-width : 700px){
+    .form-class h1{
+        font-size: 3rem;
+    }
+
+    .submit-btn{
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 500px){
+    .form-class{
+        padding: 2.5rem;
+    }
+
+    .form-class h1{
+        font-size: 2.8rem;
+    }
+
+    .submit-btn{
+       padding: 0.5rem;
+    }
+}

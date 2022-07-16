@@ -1,28 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
 *{
     margin: 0;
     padding: 0;
+    font-family: 'Quicksand', sans-serif;
 }
+
+body{
+    align-items: center;
+}
+
+.form-class{
+    width: 80vw;
+    margin: auto;
+    margin-top: 4rem;
+    background-color: #6577B3;
+    padding: 3.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 25px 40px -10px rgba(15, 61, 84, 0.5);
+}
+
+.form-class h1{
+    font-size: 3.2rem;
+    margin-bottom: 1rem;
+    color: #EDD94C;
+    font-weight: bold ;
+}
+
+.question{
+    width: 100%;
+    margin: 0.6rem 0;
+    padding: 0.5rem;
+    outline: none;
+    border: none;
+    border-radius: 0.2rem;
+    text-align: left;
+}
+
+.question::placeholder ,.options::placeholder{
+    color: rgb(154, 154, 154);
+    opacity: 1;
+  }
+
 
 .options{
     display: flex;
     flex-direction: column;
     width: 100%;
 }
-.question{
-    width: 100%;
-    margin-top: 5%;
-}
+
 .first{
     width: 100%;
     display: flex;
-justify-content: space-between;
+    justify-content: space-between;
 }
 .second{
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
+
+.answer{
+    align-items: center;
+}
+
 .input-width{
-    margin-bottom: 10px;
     width: 45%;
+    margin: 0.6rem 0;
+    padding: 0.5rem;
+    outline: none;
+    border: none;
+    border-radius: 0.2rem;
+    text-align: left;
+}
+
+.submit-btn{
+    border: none;
+    outline: none;
+    width: 10rem;
+    border-radius: 0.4rem;
+    padding: 0.5rem;
+    margin-bottom: 0.4rem;
+    margin-top: 1rem;
+    background-color: #EDD94C;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #6577B3;
+}
+
+.submit-btn:hover , .submit-btn:active{
+    cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+    .form-class{
+        width: 75vw;
+        margin: auto;
+        margin-top: 4rem;
+    }
+}
+
+@media (max-width:700px){
+
+    .form-class{
+        width: 70vw;
+        margin: 4rem auto;
+        padding: 3rem;
+    }
+    .first , .second{
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .input-width{
+        width: 70%;
+    }
+}
+
+@media (max-width : 650px){
+    .form-class{
+        margin: 3rem auto;
+    }
+
+    .form-class h1{
+        font-size: 3rem;
+    }
+
+    .submit-btn{
+        font-size: 1.4rem;
+        padding: 0.4rem;
+    }
+}
+
+@media (max-width : 500px){
+    .form-class{
+        width: 65vw;
+        padding:  2.8rem;
+    }
+
+    .form-class h1{
+        font-size: 2.8rem;
+    }
 }

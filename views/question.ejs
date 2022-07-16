@@ -2,38 +2,33 @@
 <html>
 <head>
 	<title>Registration</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-	</script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	
-	
-	<link rel="stylesheet" href="/CSS/question.css">
+	<link rel="stylesheet" href="./css/question.css">
 </head>
 <body>
 
 
 		<div class="form-class">
+			<h1>Create Question</h1>
 			 <form action="/createquestion" id="form1" class="search_form" spellcheck="false" method="post"> 
-				<input type="text" name="question" label="Question-" placeholder="Question" required="" class="form-control question"><br/>
+				<input type="text" name="question" label="Question-" placeholder="Question" required="" class="form-control question">
 				<div class="options">
                 <div class="first">
                     <input type="text" name="option1" placeholder="option1" required="" class="form-control input-width">
-				<input type="text" name="option2" placeholder="option2" required="" class="form-control input-width">
-</div>
-<div class="second">
-				<input type="text" name="option3" placeholder="option3" required="" class="form-control input-width">
-				<input type="text" name="option4" placeholder="option4" required="" class="form-control input-width">
-	</div>
+				    <input type="text" name="option2" placeholder="option2" required="" class="form-control input-width">
+                </div>
+                <div class="second">
+				    <input type="text" name="option3" placeholder="option3" required="" class="form-control input-width">
+				    <input type="text" name="option4" placeholder="option4" required="" class="form-control input-width">
+	            </div>
 
-    <div class="answer">
-        <input type="text" name="answer" placeholder="answer" required="" class="form-control input-width" style="margin: auto;">
-
-    </div>
-            </div>
+                <div class="answer">
+                    <input type="text" name="answer" placeholder="answer" required="" class="form-control input-width">
+                </div>
+                </div>
     
-        <button type="submit">Submit</button>
+                <button type="submit" class="submit-btn">Submit</button>
             </form>
-</div>
+		</div>
+	<script src="./JS/main.js"></script>
 </body>
 </html>
