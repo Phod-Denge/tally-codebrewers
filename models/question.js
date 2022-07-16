@@ -1,6 +1,6 @@
 var mongoose = require('mongoose')
 var questionSchema = mongoose.Schema({
-    quizid: {
+    quizname: {
         type: String,
         required: true
     },
