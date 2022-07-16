@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.options{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.question{
+    width: 100%;
+    margin-top: 5%;
+}
+.first{
+    width: 100%;
+    display: flex;
+justify-content: space-between;
+}
+.second{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.input-width{
+    margin-bottom: 10px;
+    width: 45%;
+}
