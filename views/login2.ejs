@@ -29,8 +29,10 @@
          					setTimeout(function(){
          						document.getElementById("check").innerHTML="";
          					},3000);
-         					if (response.Success=="Success!") {
-         						document.getElementById("aa").click();
+         	
+							if (response.Success=="Success!") {
+         	flag=true;
+								document.getElementById("aa").click();
          					};
          				},
          				error: function() {

@@ -9,6 +9,7 @@ router.get('/',function(req,res)
 );
 
 router.get('/createquiz',function(req,res){
+	
 	return res.render('createquiz.ejs');
 });
 

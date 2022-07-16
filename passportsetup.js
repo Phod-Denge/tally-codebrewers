@@ -1,32 +1,23 @@
-const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth2').Strategy;
-
-passport.serializeUser(function(user, done) {
-    /*
-    From the user take just the id (to minimize the cookie size) and just pass the id of the user
-    to the done callback
-    PS: You dont have to do it like this its just usually done like this
-    */
-    done(null, user);
-  });
-  
-passport.deserializeUser(function(user, done) {
-    /*
-    Instead of user this function usually recives the id 
-    then you use the id to select the user from the db and pass the user obj to the done callback
-    PS: You can later access this data in any routes in: req.user
-    */
-    done(null, user);
-});
-
+const passport=require('passport');
+var GoogleStrategy = require('passport-google-oauth20').Strategy;
+const GOOGLE_CLIENT_ID='898105800464-ttnhos97qbj5kt3q2dbdrebbba7lfgib.apps.googleusercontent.com'
+const GOOGLE_CLIENT_SECRET='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'
 passport.use(new GoogleStrategy({
-    clientID:process.env.GOOGLE_CLIENT_ID,
-    clientSecret:process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL:process.env.CALLBACK_URL,
-    passReqToCallback:true
+    clientID: GOOGLE_CLIENT_ID,
+    clientSecret: GOOGLE_CLIENT_SECRET,
+    callbackURL: "http://127.0.0.1:3000/createquiz"
   },
-  function(request, accessToken, refreshToken, profile, done) {
-    console.log(profile)
-    return done(null, profile);
+  function(accessToken, refreshToken, profile, cb) {
+   
+      return cb(err, user);
+
   }
 ));
+
+passport.serializeUser(function(user,done){
+    done(null,user);
+});
+
+passport.deserializeUser(function(user,done){
+    done(null,user);
+});

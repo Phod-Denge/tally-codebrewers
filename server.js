@@ -7,6 +7,13 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
+const passport=require('passport');
+require('./passportsetup');
+
+
+app.get('/auth/google',
+passport.authenticate('google',{scope : ['email','profile']})
+)
 
 mongoose.connect('mongodb+srv://sushantdhuria:sushant123@cluster0.h63jbum.mongodb.net/?retryWrites=true&w=majority', {
   useNewUrlParser: true,
@@ -42,6 +49,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/views'));
 
 var index = require('./routes/index');
+
 app.use('/', index);
 
 // catch 404 and forward to error handler
