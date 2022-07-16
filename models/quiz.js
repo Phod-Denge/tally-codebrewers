@@ -14,6 +14,10 @@ var quizSchema = mongoose.Schema({
     },
     owneremail: {
         type: String,
+    },
+    questonIDs:{
+        type  :Array,
+        default:[]
     }
 })
 module.exports = mongoose.model('quiz',quizSchema)
