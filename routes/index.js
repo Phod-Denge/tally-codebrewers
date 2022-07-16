@@ -1,7 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
-
+var quiz = require('../models/quiz');
+let quiz_id="";
+let curr_user_name=""
+let curr_user_email=""
 router.get('/',function(req,res)
 {
 	return res.render('home.ejs')
@@ -9,7 +12,24 @@ router.get('/',function(req,res)
 );
 
 router.get('/createquiz',function(req,res){
-	
+	return res.render('createquiz.ejs');
+});
+router.post('/createquiz',function(req,res){
+	console.log(req.body)
+	var quizInfo = req.body;
+	console.log(curr_user_email)
+	var new_quiz = new quiz({
+		quizname:quizInfo.quizName,
+		quizdescription:quizInfo.quizDescription,
+		owner: curr_user_name,
+		owneremail: curr_user_email
+	});
+	new_quiz.save(function(err, Person){
+		if(err)
+			console.log(err);
+		else
+			console.log('quiz created succefully');
+	});
 	return res.render('createquiz.ejs');
 });
 
@@ -101,6 +121,8 @@ router.get('/profile', function (req, res, next) {
 			res.redirect('/');
 		}else{
 			//console.log("found");
+			curr_user_name=data.username
+			curr_user_email=data.email
 			return res.render('data.ejs', {"name":data.username,"email":data.email});
 		}
 	});
