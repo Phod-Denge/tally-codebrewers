@@ -3,6 +3,11 @@
 <head>
 	<title>Registration</title>
 	<link rel="stylesheet" href="./css/question.css">
+	<script>
+   function clickFun() {
+        window.location = '/profile';
+    }
+</script>
 </head>
 <body>
 
@@ -26,7 +31,9 @@
                 </div>
                 </div>
     
-                <button type="submit" class="submit-btn">Submit</button>
+				<button type="submit" class="submit-btn">Next</button>
+			
+                <button type="submit" class="submit-btn" onclick="clickFun()" id="submitbutton">Submit</button>
             </form>
 		</div>
 	<script src="./JS/main.js"></script>
