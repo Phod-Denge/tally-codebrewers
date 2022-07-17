@@ -15,7 +15,7 @@ var quizSchema = mongoose.Schema({
     owneremail: {
         type: String,
     },
-    questonIDs:{
+    questionIDs:{
         type  :Array,
         default:[]
     }

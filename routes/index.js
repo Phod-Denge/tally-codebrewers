@@ -12,7 +12,9 @@ router.get('/',function(req,res)
 	return res.render('home.ejs')
 }
 );
-
+router.get('/attemptquiz',function(req,res){
+	return res.render('attemptquiz.ejs');
+});
 router.get('/createquiz',function(req,res){
 	return res.render('createquiz.ejs');
 });
@@ -55,7 +57,7 @@ router.post('/createquestion',function(req,res){
 			{
 				quiz.findOneAndUpdate(
 					{ quizname: quiz_name }, 
-					{ $push: { questonIDs: count+1  } },
+					{ $push: { questionIDs: count+1  } },
 				   function (error, success) {
 						 if (error) {
 							 console.log(error);
