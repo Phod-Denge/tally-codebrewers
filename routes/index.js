@@ -3,17 +3,121 @@ var router = express.Router();
 var User = require('../models/user');
 var quiz = require('../models/quiz');
 var question = require('../models/question');
-let {get_quiz_by_user}= require('./queries')
+var attempter = require('../models/attempter');
+let {get_quiz_by_user,get_attempter,get_question_by_id,get_quiz_by_quizid,get_answer_by_username}= require('./queries')
 let quiz_name="";
 let curr_user_name=""
 let curr_user_email=""
+let attempter_name=""
+let quiz_id="";
+
 router.get('/',function(req,res)
 {
 	return res.render('home.ejs')
 }
 );
-router.get('/attemptquiz',function(req,res){
-	return res.render('attemptquiz.ejs');
+router.get('/attemptques/:id',function(req,res){
+	// console.log(req.query)
+	attempter.findOneAndUpdate(
+		{ quizid: quiz_id ,name:attempter_name}, 
+		{ $push: { answers: req.query.option  } },
+	   function (error, success) {
+			 if (error) {
+				 console.log(error);
+			 } else {
+				//  console.log(success);
+			 }
+		 });
+	let id=parseInt(req.params.id);
+	let Quiz = get_quiz_by_quizid(quiz_id)
+Quiz.then(data=>
+{
+	console.log(data)
+	if(id==data[0].questionIDs.length)
+            return res.render('quiz_completed.ejs');
+        
+        let ques=get_question_by_id(data[0].questionIDs[id])
+        ques.then(question=>{
+            console.log(question)
+            var obj={
+                question:question[0].questionText,
+                a:question[0].options[0],
+                b:question[0].options[1],
+                c:question[0].options[2],
+                d:question[0].options[3],
+                correct:question[0].answer
+            }
+        //    console.log(i)
+        res.render('attemptquiz.ejs',{id:id+1,ques:obj});
+	})
+})
+})
+router.post('/attemptquiz',function(req,res){
+	attempter_name=req.body.Name
+	console.log(quiz_id)
+	let is_new= get_attempter(attempter_name,quiz_id);
+	is_new.then(data=>{
+		if(data.length!=0)
+		{
+			return res.render('start_quiz.ejs',{message:"You Have Already Attempted the quiz"});
+		}
+		else
+		{
+			var new_attempter = new attempter({
+				name:attempter_name,
+				quizid:quiz_id
+			});
+			new_attempter.save(function(err, Person){
+				if(err)
+					console.log(err);
+				else
+				{
+					console.log('attempter created succefully');
+					return res.redirect('/attemptques/0')
+				}
+			});
+		}
+	})
+
+
+});
+router.get('/startquiz/:id',function(req,res){
+	quiz_id=req.params.id
+
+	return res.render('start_quiz.ejs',{message:""});
+});
+router.get('/viewresults',function(req,res){
+	let results=get_answer_by_username(attempter_name,quiz_id);
+	results.then(d=>{
+		let answers=d[0].answers
+		let score =0;
+		let Quiz = get_quiz_by_quizid(quiz_id)
+		correct_ans=[]
+		Quiz.then(data=>
+		{
+			for(let i=0;i<data[0].questionIDs.length;i++)
+			{
+				
+				let ques=get_question_by_id(data[0].questionIDs[i])
+				ques.then(question=>{
+					// console.log(question)
+					correct=question[0].answer
+					correct_ans.push(correct)
+					if(correct==answers[i+1])
+					{
+						score++; 	
+					}
+					if(i==data[0].questionIDs.length-1)
+					{
+						console.log(correct_ans)
+						return res.render('results.ejs',{score:score,total:data[0].questionIDs.length,correct:correct_ans,answers:answers});
+					}
+				})
+				
+			}
+			
+		})
+	})
 });
 router.get('/createquiz',function(req,res){
 	return res.render('createquiz.ejs');
@@ -22,22 +126,27 @@ router.post('/createquiz',function(req,res){
 	console.log(req.body)
 	var quizInfo = req.body;
 	console.log(curr_user_email)
-	var new_quiz = new quiz({
-		quizname:quizInfo.quizName,
-		quizdescription:quizInfo.quizDescription,
-		owner: curr_user_name,
-		owneremail: curr_user_email
-	});
-	new_quiz.save(function(err, Person){
-		if(err)
-			console.log(err);
-		else
-		{
-			quiz_name=quizInfo.quizName
-			console.log('quiz created succefully');
-			return res.render('question.ejs');
-		}
-	});
+	quiz.count({}, function( err, count){
+		var new_quiz = new quiz({
+			quizname:quizInfo.quizName,
+			quizid:count+1,
+			quizdescription:quizInfo.quizDescription,
+			owner: curr_user_name,
+			owneremail: curr_user_email
+		});
+		new_quiz.save(function(err, Person){
+			if(err)
+				console.log(err);
+			else
+			{
+				quiz_name=quizInfo.quizName
+				console.log('quiz created succefully');
+				return res.render('question.ejs');
+			}
+		});
+		});
+	
+
 	
 });
 router.post('/createquestion',function(req,res){

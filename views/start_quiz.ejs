@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-heading">PD Quiz</div>
+        <div class="menu-toggle" id="mobile-nav">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="/signup" class="nav-links">Teacher</a></li>
+            <li><a href="#" class="nav-links">Contact</a></li>
+            <li class="abc">
+                <a href="/logout" class="nav-links">Logout</a>
+            </li>
+        </ul>
+    </nav>
+	<%=message  %> 
+    <div class="form-class">
+        <form action="/attemptquiz" id="form1" class="search_form" spellcheck="false" method="post"> 
+           <input type="text" name="Name" label="Name-" placeholder="Name" required="" class="form-control question"><br/>
+   <button type="submit">Submit</button>
+       </form>
+</body>
+</html>

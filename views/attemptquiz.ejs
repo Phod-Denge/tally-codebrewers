@@ -5,8 +5,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 	</script>
 
-	<link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/attemptquiz.css">
+	<link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/attemptquiz.css">
 </head>
 <body>
 
@@ -15,33 +15,35 @@
         test will expire in
 <div id="timer"></div>
 </div>
+    <form action=<%="/attemptques/"+id%> id="form1" class="search_form" spellcheck="false" method="get"> 
         <div class="container">
             <div class="col">
                 <h3 id="questionBox">
-                    1) Lorem ipsum dolor sit amet, consectetur adipisicing elit Debitis?
+                    <%=id%> ) <%=ques.question%>
                 </h3>
             </div>
             <div class="col box">
                 <input name="option" type="radio" id="first" value="a" required>
-                <label for="first">Testing 1</label>
+                <label for="first"><%=ques.a%></label>
             </div>
             <div class="col box">
                 <input name="option" type="radio" id="second" value="b" required>
-                <label for="second">Testing 2</label>
+                <label for="second"><%=ques.b%></label>
             </div>
             <div class="col box">
                 <input name="option" type="radio" id="third" value="c" required>
-                <label for="third">Testing 3</label>
+                <label for="third"><%=ques.c%>3</label>
             </div>
             <div class="col box">
                 <input name="option" type="radio" id="fourth" value="d" required>
-                <label for="fourth">Testing 4</label>
+                <label for="fourth"><%=ques.d%></label>
             </div>
             <button id="submit">Submit</button>
         </div>
-
+    </form>
     </section>
-    <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
-    <script src="./JS//attemptquiz.js"></script>
+    <!-- <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+    <script src="./JS//attemptquiz.js"></script> -->
+
 </body>
 </html>
